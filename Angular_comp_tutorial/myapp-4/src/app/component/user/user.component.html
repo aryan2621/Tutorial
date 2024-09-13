@@ -1,0 +1,52 @@
+<p>user works!</p>
+<a href="/about">Go to about</a>
+
+<button (click)="movetoAbout()" class="btn btn-warning">About</button>
+<p>User name is {{ user.name }}</p>
+<p>User id is {{ user.id }}</p>
+
+<!-- Moving to other user -->
+<a [routerLink]="['/user', 1, 'rishabh']">Move to rishabh</a>
+<!-- on going to other route the user 2
+  name :aryan
+  will be there and on clicking this the data will remain same
+
+-->
+
+<!-- For taking the query Params -->
+<!-- <br />
+<a
+  [routerLink]="['/user', 2, 'sanskriti']"
+  [queryParams]="{
+    page: 1,
+    search: 'newest'
+  }"
+  [fragment]="'loading'"
+  >Add Query</a
+> -->
+
+<!-- For taking the query Params -->
+<br />
+<!-- <a (click)="getParamsvalues()">Move to</a> -->
+
+<!-- Fetching the values of queryParameter -->
+<!-- <br>
+<a [routerLink]="['/user',3,'ankit']"
+[queryParams]="{
+  page:1,
+  search:'newest'
+}"
+[fragment]="'loading'"
+>Search for ankit</a> -->
+
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a [routerLink]="['/user', 1, 'rishabh']" class="nav-link">Rishabh</a>
+  </li>
+  <li class="nav-item">
+    <a [routerLink]="['/user', 2, 'aryan']" class="nav-link">Aryan</a>
+  </li>
+  <li class="nav-item">
+    <a [routerLink]="['/user', 3, 'naitik']" class="nav-link">Naitik</a>
+  </li>
+</ul>

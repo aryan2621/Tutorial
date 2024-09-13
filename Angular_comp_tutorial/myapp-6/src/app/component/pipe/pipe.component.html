@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngFor="let user of users | filter : filterString">
+        <div>
+          <!-- Short custom Pipe -->
+          {{ user.name | short }} --- {{ user.name | titlecase }} ---
+          {{ user.date | date : "fullDate" | uppercase }} --
+          {{ user.age | number : "1.2-3" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" [(ngModel)]="filterString" class="form-control" />
+    </div>
+  </div>
+</div>

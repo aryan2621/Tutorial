@@ -1,0 +1,96 @@
+<div>
+  <div *ngIf="errorMessage && alert">
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
+<div *ngIf="!errorMessage && alert">
+  <div class="alert alert-success" role="alert">
+    {{ response.email }} has been successfully registered.
+  </div>
+</div>
+<div class="container w-50">
+  <div class="row">
+    <div class="col-md-12 py-3">
+      <form #authForm="ngForm" (ngSubmit)="onFormSubmit(authForm)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            ngModel
+            name="email"
+            #email="ngModel"
+            required
+          />
+        </div>
+        <span
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="text-danger"
+        >
+          <span *ngIf="email.errors && email?.hasError('required')">
+            Email is required.
+          </span>
+          <span *ngIf="email.errors && email?.hasError('email')">
+            Email is invalid.
+          </span>
+        </span>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+        </div>
+
+        <span
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="text-danger"
+        >
+          <span *ngIf="password.errors && password?.hasError('required')">
+            Password is required.
+          </span>
+          <span *ngIf="password.errors && password?.hasError('email')">
+            Password is invalid.
+          </span>
+          <span *ngIf="password.errors && password?.hasError('minlength')">
+            Password is less than 6 characters.
+          </span>
+        </span>
+        <div class="d-flex my-2 justify-content-between">
+          <button
+            type="submit"
+            class="btn btn-primary w-25"
+            [disabled]="!authForm.valid"
+          >
+            <span
+              [hidden]="!isLoading"
+              class="spinner-grow spinner-grow-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            {{ isLoginMode ? "LOGIN" : "SIGNUP" }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning w-25"
+            (click)="onSwitchMode()"
+          >
+            Switch to {{ !isLoginMode ? "LOGIN" : "SIGNUP" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

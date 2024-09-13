@@ -1,0 +1,17 @@
+<div class="form-group">
+  <h4>Add Users</h4>
+  <label for=""> User Name</label>
+  <!-- <input type="text" class="form-control" [(ngModel)]="userName" /> -->
+  <input type="text" class="form-control" #userName />
+  <!-- #userName is a local reference variable -->
+
+
+  <div class="mt-2">
+    <!-- <button class="btn btn-primary" (click)="AddUser()">User</button> -->
+    <button class="btn btn-primary" (click)="AddUser()">User</button>
+    <!-- But this has limitation as this is available only in this function
+    to available in all typescript file use @ViewChild
+    -->
+  </div>
+</div>
+

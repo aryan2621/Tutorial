@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav flex-column nav-pills">
+        <!-- <li class="nav-item"><a href="/">Home</a></li>
+        <li class="nav-item"><a href="/user">User</a></li>
+        <li class="nav-item"><a href="/about">About</a></li> -->
+        <!-- This will refresh the page ,to avoid use routerLink-->
+
+        <!-- Add class active if this is active -->
+        <!-- a problem is / and /about both there hence both will be active
+        to avoid this use routerLinkActiveOptions="{exact:true}"
+        -->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/user"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >User</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/about']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >About</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- <app-home></app-home>
+          <app-user></app-user>
+          <app-about></app-about> -->
+          <router-outlet></router-outlet>
+          <!-- // <router-outlet></router-outlet> is used to display the component -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex flex-row">
+    <div class="m-3">
+      <a class="btn btn-success" (click)="login()">Login</a>
+    </div>
+    <div class="m-3">
+      <a class="btn btn-warning" (click)="logOut()">Logout</a>
+    </div>
+  </div>
+</div>

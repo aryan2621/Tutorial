@@ -1,0 +1,14 @@
+
+
+<tr>
+  <th scope="row">*</th>
+  <td>{{ user.name }}</td>
+  <td>{{ user.age }}</td>
+  <td>{{ user.status }}</td>
+  <td>
+    <button class="btn btn-danger" (click)="setActive(user)">A</button>
+  </td>
+  <td>
+    <button class="btn btn-success" (click)="setInactive(user)">I</button>
+  </td>
+</tr>

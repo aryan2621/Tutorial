@@ -1,0 +1,52 @@
+<p>user works!</p>
+<h1>Hii user</h1>
+<div>
+  <p>The name of the employee is {{ Employee.name }}</p>
+  <p>The age of the emploee is {{ Employee.age }}</p>
+  <p>The address of the emploee is {{ getUserAddress() }}</p>
+</div>
+
+<button [disabled]="allowUserFromUser" class="btn btn-success">
+  Add the user {{ allowUserFromUser }}
+</button>
+<div [innerText]="allowUserFromUser"></div>
+<div>{{ allowUserFromUser }}</div>
+<!-- task is to enabled the button by 5 seconds -->
+
+<h4>{{ userCreatedStatus }}</h4>
+<button (click)="changeUserCreatedStatus()">+</button>
+
+<h5>{{ CurrentUser }}</h5>
+<input type="text" class="form-control" (input)="onUpdateUserinfo($event)" />
+
+<input class="form-control" type="text" [(ngModel)]="CurrentUser" />
+
+<button class="btn btn-secondary" (click)="toggleUser()">Toggle</button>
+
+<div *ngIf="show">{{ CurrentUser }}</div>
+<div *ngIf="!show">{{ CurrentUser }}</div>
+
+<!-- or -->
+<p>{{ show }}</p>
+<ng-container *ngIf="show ? loggedIn : loggedOut"> </ng-container>
+<ng-template #loggedIn>
+  <div>Welcome back, friend.</div>
+</ng-template>
+<ng-template #loggedOut>
+  <div>Please friend, login.</div>
+</ng-template>
+<button (click)="changeColor()">Click Me</button>
+<div
+  [ngStyle]="{
+    color: color
+  }"
+>
+  Hii there
+</div>
+
+<div [ngClass]="Styles[0]">Hiii</div>
+<div *ngFor="let user of users; let i = index">{{ i }}-{{ user }}</div>
+
+<div [ngSwitch]="mark">
+  <div *ngSwitchCase="90">{{ student }}</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="container w-50">
+  <div class="row">
+    <div class="col-md-12 p-3">
+      <!-- <form (ngSubmit)="onFormSubmit(f)" #f="ngForm"> -->
+      <div [hidden]="userData.valid || !userData.touched">
+        Please put valid userdata
+      </div>
+      <form (ngSubmit)="onFormSubmit()" #f="ngForm">
+        <div #userData="ngModelGroup" ngModelGroup="userData">
+          <!-- for combining the data/grouping the data -->
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Enter name"
+              name="username"
+              ngModel
+              (input)="onInput($event)"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter email"
+              name="email"
+              ngModel
+              required
+              email
+              #email="ngModel"
+            />
+            <!-- For adding validation in template driven form -->
+            <span *ngIf="email.invalid && email.touched" class="text-danger"
+              >Put valid email.</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              placeholder="Enter phone"
+              name="phone"
+              ngModel
+              required
+            />
+            <!-- No binding -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">gender</label>
+          <!-- <select id="gender" class="form-control" name="gender" ngModel="male"> -->
+          <!-- one way bounding -->
+          <select
+            id="gender"
+            class="form-control"
+            name="gender"
+            [(ngModel)]="gender"
+          >
+            <!-- two way bounding -->
+
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="about">Tell me about yourself....</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            name="about"
+            [(ngModel)]="about"
+          ></textarea>
+          <!-- two way bounding -->
+        </div>
+        <div class="mt-2">
+          <button
+            [disabled]="!f.valid"
+            type="submit"
+            class="btn btn-warning w-100"
+          >
+            Add Data
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- {{ about }} -->
+<div class="mt-3">
+  <button (click)="fillThedata()" class="btn btn-info w-100">Fill the Info</button>
+</div>
+

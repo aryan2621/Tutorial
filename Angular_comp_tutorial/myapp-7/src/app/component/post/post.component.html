@@ -1,0 +1,49 @@
+<div class="container w-50">
+  <div class="row">
+    <form [formGroup]="postForm" (ngSubmit)="createPost()">
+      <div class="form-group my-3">
+        <label>Title</label>
+        <input type="text" class="form-control" formControlName="title" />
+      </div>
+      <div class="form-group my-3">
+        <label>Content</label>
+        <textarea
+          class="form-control"
+          formControlName="content"
+          cols="30"
+          rows="6"
+        ></textarea>
+      </div>
+      <div class="my-3">
+        <button class="btn btn-primary w-100" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <table class="table table-hover" [hidden]="isError">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let post of Post; let i = index">
+      <tr>
+        <th scope="row">{{ post.id }}</th>
+        <td>{{ post.title }}</td>
+        <td>{{ post.content }}</td>
+        <td>
+          <button
+            class="btn btn-danger"
+            (click)="deletePost(post.id)"
+            type="button"
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
