@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/utilities/User';
+import {enviroment} from 'src/enviroment/enviroment.ts'
 
 export interface AuthResponseData {
   LocalId: string;
@@ -17,11 +18,9 @@ export interface AuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
-  URL_For_SIGNUP =
-    'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
-  URL_For_LOGIN =
-    'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
-  API = 'AIzaSyCfNCDHvoi13na2xmFSoPam2KrJQ-cxb6M ';
+  URL_For_SIGNUP = enviroment.URL_For_SIGNUP;
+  URL_For_LOGIN = enviroment.URL_For_LOGIN;
+  API = enviroment.API;
 
   constructor(private http: HttpClient) {}
   signUp(email: string, password: string) {
